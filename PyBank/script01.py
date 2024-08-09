@@ -7,7 +7,7 @@ myfile = os.path.join('Resources','budget_data.csv')
 with open (myfile) as csv_file:
     csvreader = csv.reader(csv_file, delimiter =",")
     csv_header = next(csvreader)
-
+    
 #Values 
 totalmonths = 0
 prev_rev = 0
@@ -21,19 +21,19 @@ total_sum = 0
 
 for row in csvreader:
 
-     #track totals 
+#track totals 
     totalmonths = totalmonths + 1 
     total_sum = total_sum + int(row[1])
-        #Trake the revenue change 
+ #Trake the revenue change 
     rev_change = int(row[1]) - prev_rev 
     prev_rev = int(row[1]) 
     rev_change_list = rev_change_list + [rev_change]
     month_of_change = month_of_change + [row[0]] 
-    #calculate greatest_inc 
+ #calculate greatest_inc 
     if(rev_change > greatest_inc_rev): 
         greatest_inc_month = row[0]
         greatest_inc_rev = rev_change
-        #calculate greatest_dec 
+#calculate greatest_dec 
     if(rev_change < greatest_dec_rev): 
         greatest_dec_month = row[0]
         greatest_dec_rev = rev_change
